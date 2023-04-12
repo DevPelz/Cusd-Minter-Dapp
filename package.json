@@ -1,6 +1,8 @@
+
 {
+  
   "name": "nft-dapp",
-  "homepage": "",
+  "homepage": "https://${pelzfx}.github.io/${Cusd-Minter-Dapp}",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

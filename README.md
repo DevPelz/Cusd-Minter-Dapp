@@ -2,7 +2,7 @@
 
 #### NFT minter decentralised application
 
-- [Demo App]()
+- [Demo App](https://cusd-minter-dapp.vercel.app/)
 
 ## About the dapp
 Nft Minter is a decentralized minting app that allows users to mint their unique Nfts with built in name and description using the Nft Url generated from [pinata(ipfs)](https://www.pinata.cloud/).
@@ -19,7 +19,8 @@ _Please ensure you have Git installed before running the above command and subse
 - Then install dependencies by running the command 
 
 ```bash
-npm install 
+- npm install
+- npm install web3 @celo/contractkit 
 ```
 
 - Compile the contracts using the command

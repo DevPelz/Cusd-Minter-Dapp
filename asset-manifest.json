@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/$%7BCusd-Minter-Dapp%7D/static/css/main.45d322af.css",
+    "main.js": "/$%7BCusd-Minter-Dapp%7D/static/js/main.b2dfc268.js",
+    "static/js/787.175fb6d8.chunk.js": "/$%7BCusd-Minter-Dapp%7D/static/js/787.175fb6d8.chunk.js",
+    "index.html": "/$%7BCusd-Minter-Dapp%7D/index.html",
+    "main.45d322af.css.map": "/$%7BCusd-Minter-Dapp%7D/static/css/main.45d322af.css.map",
+    "main.b2dfc268.js.map": "/$%7BCusd-Minter-Dapp%7D/static/js/main.b2dfc268.js.map",
+    "787.175fb6d8.chunk.js.map": "/$%7BCusd-Minter-Dapp%7D/static/js/787.175fb6d8.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.45d322af.css",
+    "static/js/main.b2dfc268.js"
+  ]
+}

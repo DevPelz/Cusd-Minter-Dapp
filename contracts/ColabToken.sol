@@ -17,7 +17,8 @@ contract ColabToken is ERC721, ERC721URIStorage, Ownable {
 
     /// @notice Mints a new token and assign the function caller to be the owner
     /// @param uri Token metadata URI
-    function safeMint(string memory uri) public {
+    function safeMint(string calldata uri) public {
+        require(bytes(uri).length > 0, "Empty uri");
         uint256 tokenId = _tokenIdCounter.current();
         _tokenIdCounter.increment();
         _safeMint(msg.sender, tokenId);
@@ -27,8 +28,7 @@ contract ColabToken is ERC721, ERC721URIStorage, Ownable {
     /// @notice Keeps track of total number of tokens minted 
     /// @return Total number of tokens minted 
     function tokenCounter() public view returns (uint256) {
-        uint256 counter = _tokenIdCounter.current();
-        return counter;
+        return _tokenIdCounter.current();
     }
 
     // The following functions are overrides required by Solidity.

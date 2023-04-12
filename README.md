@@ -1,20 +1,21 @@
-# NFT Dapp 1
+# CUSD NFT MINTER DAPP
 
-NFT minter decentralised application
+#### NFT minter decentralised application
 
-## Getting started
+- [Demo App]()
+
+## About the dapp
+Nft Minter is a decentralized minting app that allows users to mint their unique Nfts with built in name and description using the Nft Url generated from [pinata(ipfs)](https://www.pinata.cloud/).
+Its Built on the [Celo(alfajores testnet)](https://docs.celo.org/network) network.
+
+## Getting started for Developers
 
 - Clone the repository by running the command:
 ```bash
-git 
+git clone https://github.com/pelzfx/Cusd-Minter-Dapp
 ```
 _Please ensure you have Git installed before running the above command and subsequent commands_
 
-
-
-```bash
-
-```
 - Then install dependencies by running the command 
 
 ```bash
@@ -30,8 +31,11 @@ npx hardhat compile
 
 ```bash
 npx hardhat run scripts/deploy.js --network alfajores
+```
+- To launch on localHost run the command:
 
-
+```bash
+npm start
 ```
 
 > **Note** Please ensure to create a `.env` file in your project directory and add your secret keys before running the deployment command. Check out the `.env-sample` file to see how to structure your `.env` file.

@@ -1,4 +1,3 @@
- 
 import React, { useState, useEffect } from "react";
 import ADDRESS from "./contracts/Token-address.json";
 import ABI from "./contracts/Token.json";
@@ -12,12 +11,12 @@ const ALFAJORES_CHAIN_ID = 44787;
 // const ALFAJORES_CHAIN_ID = 31337
 
 function App() {
-  const [walletAddress, setWalletAddress] = useState(null);
-  const [walletBalance, setWalletBalance] = useState(0)
-  const [tokenUri, setTokenUri] = useState(null);
-  const [nfts, setNfts] = useState([]);
-  const [chainId, setChainId] = useState(null)
-  const [notifMessage, setNotifMessage] = useState();
+  const [walletAddress, setWalletAddress] = useState(null); // State to store the wallet address
+  const [walletBalance, setWalletBalance] = useState(0); // State to store the wallet balance
+  const [tokenUri, setTokenUri] = useState(null); // State to store the token URI
+  const [nfts, setNfts] = useState([]); // State to store the NFTs
+  const [chainId, setChainId] = useState(null); // State to store the current chain ID
+  const [notifMessage, setNotifMessage] = useState(); // State to store notification messages
 
   // Check if Metamask is already connected and set as account
   const checkWalletStatus = async () => {
@@ -25,17 +24,17 @@ function App() {
     if (!ethereum) {
       console.log("Metamask not installed");
       return;
-    } else { 
-      const accounts = await ethereum.request({ method: "eth_accounts" });
-      if (accounts.length !== 0) setWalletAddress(accounts[0]);
+    } else {
+      const accounts = await ethereum.request({ method: "eth_accounts" }); // Check if there are any connected accounts
+      if (accounts.length !== 0) setWalletAddress(accounts[0]); // If there is a connected account, set it as the wallet address
 
-      const chainId = await ethereum.request({ method: "eth_chainId" });
+      const chainId = await ethereum.request({ method: "eth_chainId" }); // Get the current chain ID
       setChainId(chainId);
-      
-      ethereum.on("chainChanged", handleChainChange);
+
+      ethereum.on("chainChanged", handleChainChange); // Listen for changes in chain ID
 
       function handleChainChange(_chainId) {
-        window.location.reload();
+        window.location.reload(); // Reload the page when chain ID changes
       }
     }
   };
@@ -49,9 +48,9 @@ function App() {
         return;
       } else {
         const accounts = await ethereum.request({
-          method: "eth_requestAccounts",
+          method: "eth_requestAccounts", // Request user to connect their Metamask account
         });
-        setWalletAddress(accounts[0]);
+        setWalletAddress(accounts[0]); // Set the connected account as the wallet address
       }
     } catch (e) {
       console.log(e);
@@ -59,22 +58,25 @@ function App() {
   };
 
   const fetchNfts = async () => {
-    if (parseInt(chainId) !== ALFAJORES_CHAIN_ID) {
-      setNotifMessage("Please switch your Metamask network to ALFAJORES. Visit https://chainlist.org for help")
+    if (parseInt(chainId) !== ALFAJORES_CHAIN_ID) { // Check if the current chain ID is not equal to the expected chain ID
+      setNotifMessage(
+        "Please switch your Metamask network to ALFAJORES. Visit https://chainlist.org for help"
+      ); // Display a notification message to switch to the expected network
       return;
     }
     setNotifMessage("Loading dapp...");
     try {
       const { ethereum } = window;
       if (ethereum) {
-        const provider = new ethers.providers.Web3Provider(ethereum);
-        const signer = provider.getSigner();
-        const bal =  Number(await signer.getBalance()).toString()
+        const provider = new ethers.providers.Web3Provider(ethereum); // Create a provider with the connected Ethereum provider
+        const signer = provider.getSigner(); // Get the signer from the provider
+        const bal = Number(await signer.getBalance()).toString(); // Get the balance of the connected wallet address
         const tokenContract = new ethers.Contract(
           ADDRESS.Token,
           ABI.abi,
           signer
         );
+
 
         const tokenLength = Number(await tokenContract.tokenCounter());
         const _tokens = [];

@@ -15,7 +15,7 @@ contract ColabToken is ERC721, ERC721URIStorage, Ownable {
 
     constructor() ERC721("ColabToken", "COT") {}
 
-    /// @notice Mints a new token and assign the function caller to be the owner
+    /// @notice Mints a new token and assigns the function caller to be the owner
     /// @param uri Token metadata URI
     function safeMint(string memory uri) public {
         uint256 tokenId = _tokenIdCounter.current();
@@ -24,8 +24,8 @@ contract ColabToken is ERC721, ERC721URIStorage, Ownable {
         _setTokenURI(tokenId, uri);
     }
 
-    /// @notice Keeps track of total number of tokens minted 
-    /// @return Total number of tokens minted 
+    /// @notice Keeps track of the total number of tokens minted
+    /// @return Total number of tokens minted
     function tokenCounter() public view returns (uint256) {
         uint256 counter = _tokenIdCounter.current();
         return counter;

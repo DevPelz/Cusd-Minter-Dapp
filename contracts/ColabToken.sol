@@ -13,6 +13,9 @@ contract ColabToken is ERC721, ERC721URIStorage, Ownable {
 
     Counters.Counter private _tokenIdCounter;
 
+    event TokenMinted(address indexed owner, uint256 indexed tokenId, string uri);
+    event TokenTransferred(address indexed from, address indexed to, uint256 indexed tokenId);
+
     constructor() ERC721("ColabToken", "COT") {}
 
     /// @notice Mints a new token and assign the function caller to be the owner
@@ -23,6 +26,7 @@ contract ColabToken is ERC721, ERC721URIStorage, Ownable {
         _tokenIdCounter.increment();
         _safeMint(msg.sender, tokenId);
         _setTokenURI(tokenId, uri);
+        emit TokenMinted(msg.sender, tokenId, uri);
     }
 
     /// @notice Keeps track of total number of tokens minted 
@@ -44,5 +48,10 @@ contract ColabToken is ERC721, ERC721URIStorage, Ownable {
         returns (string memory)
     {
         return super.tokenURI(tokenId);
+    }
+
+    function transferFrom(address from, address to, uint256 tokenId) public override {
+        super.transferFrom(from, to, tokenId);
+        emit TokenTransferred(from, to, tokenId);
     }
 }

@@ -2,7 +2,7 @@
 
 #### NFT minter decentralised application
 
-- [Demo App](https://cusd-minter-dapp-891d47.spheron.app/)
+- [Demo App](https://bafybeiaisb5mh4v72fccro36dsucaczu6uxhwhkjglzz3fm5pene4q7iwa.ipfs.sphn.link/)
 
 ## About the dapp
 Nft Minter is a decentralized minting app that allows users to mint their unique Nfts with built in name and description using the Nft Url generated from [pinata(ipfs)](https://www.pinata.cloud/).

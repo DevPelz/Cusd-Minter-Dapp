@@ -9,7 +9,6 @@ import BigNumber from "bignumber.js";
 
 const ALFAJORES_DECIMALS = 18;
 const ALFAJORES_CHAIN_ID = 44787;
-// const ALFAJORES_CHAIN_ID = 31337
 
 function App() {
   const [walletAddress, setWalletAddress] = useState(null);
@@ -59,7 +58,7 @@ function App() {
   };
 
   const fetchNfts = async () => {
-    if (parseInt(chainId) != ALFAJORES_CHAIN_ID) {
+    if (parseInt(chainId) !== ALFAJORES_CHAIN_ID) {
       setNotifMessage("Please switch your Metamask network to ALFAJORES. Visit https://chainlist.org for help")
       return;
     }
@@ -142,11 +141,12 @@ function App() {
     if (walletAddress && chainId) {
       fetchNfts();
     }
-  }, [walletAddress, chainId]);
+  }, [walletAddress, chainId, fetchNfts]);
 
   useEffect(() => {
     checkWalletStatus();
   }, []);
+
 
   return (
     <div className="app">

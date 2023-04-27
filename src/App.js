@@ -59,7 +59,7 @@ function App() {
   };
 
   const fetchNfts = async () => {
-    if (parseInt(chainId) !== ALFAJORES_CHAIN_ID) {
+    if (parseInt(chainId) != ALFAJORES_CHAIN_ID) {
       setNotifMessage("Please switch your Metamask network to ALFAJORES. Visit https://chainlist.org for help")
       return;
     }

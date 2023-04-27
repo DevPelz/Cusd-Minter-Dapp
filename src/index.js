@@ -1,4 +1,3 @@
-// import { useContractKit } from "@celo-tools/use-contractkit";
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';

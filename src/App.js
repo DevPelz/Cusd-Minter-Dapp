@@ -147,6 +147,21 @@ function App() {
     checkWalletStatus();
   }, []);
 
+  useEffect(() => {
+    const fetchBalance = async () => {
+      if (walletAddress && chainId) {
+        const { ethereum } = window;
+        if (ethereum) {
+          const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+          const bal = await signer.getBalance();
+          setWalletBalance(bal.toString());
+        }
+      }
+    };
+  
+    fetchBalance();
+  }, [walletAddress, chainId]);
 
   return (
     <div className="app">
